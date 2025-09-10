@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,18 +15,26 @@ import lombok.RequiredArgsConstructor;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserId")
+    @Column(name = "userId")
     private int userId;
-    @Column(name = "Name")
+    @Column(name = "name", nullable = false, length = 40)
     private String name;
-    @Column(name = "Email", unique = true)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
-    @Column(name = "Password")
+    @Column(name = "password", nullable = false, length = 20)
     private String password;
-    @Column(name = "Role")
+    @Column(name = "role", nullable = false)
     private Role role;
-    @Column(name = "ContactNumber")
+    @Column(name = "contactNumber",nullable = false, length = 10)
     private String contactNumber;
 
+    @OneToMany(mappedBy = "userId")
+    private List<Booking> bookingList;
+
+    @OneToMany(mappedBy = "userId")
+    private List<Payment> paymentList;
+
+    @OneToMany(mappedBy = "userId")
+    private List<Review> reviewList;
 
 }
