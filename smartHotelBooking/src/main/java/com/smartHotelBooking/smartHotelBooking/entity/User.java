@@ -37,4 +37,7 @@ public class User {
     @OneToMany(mappedBy = "userId")
     private List<Review> reviewList;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private LoyaltyAccount loyaltyAccount;
+
 }
