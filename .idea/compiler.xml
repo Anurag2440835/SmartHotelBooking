@@ -11,6 +11,12 @@
         </processorPath>
         <module name="smartHotelBooking" />
       </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="smartHotelBooking (1)" />
+      </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
